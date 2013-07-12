@@ -1,12 +1,80 @@
-<html>
-<body>
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+    <title>Upload Server</title>
 
-<form action="upload_file.php" method="post"
-enctype="multipart/form-data">
-<label for="file">Filename:</label>
-<input type="file" name="file" id="file"><br>
-<input type="submit" name="submit" value="Submit">
-</form>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	</head>
 
-</body>
-</html>
+  <body>
+
+    <div id="dic_bubble" class="selection_bubble" style="z-index: 9999; visibility: hidden;" fetching="false"></div><div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Upload/Download Server</a>
+        </div>
+      </div>
+    </div>
+    <script>
+			function ShowUploadPage() {
+				document.getElementById('upload_it').style.display = 'block';
+				$("#li_download").removeClass("active");
+        $("#li_upload").addClass("active");
+				document.getElementById('download_it').style.display = 'none';
+			}
+
+			function ShowDownloadPage() {
+				document.getElementById('download_it').style.display = 'block';
+        $("#li_upload").removeClass("active");
+				$("#li_download").addClass("active");
+				document.getElementById('upload_it').style.display = 'none';
+			}
+		</script>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li id="li_upload" class="active"><a href="#" onclick="ShowUploadPage();">Upload</a></li>
+              <li id="li_download"><a href="#" onclick="ShowDownloadPage();">Download</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <div id="upload_it" class="well">
+            <h1>Upload It!!</h1>
+							<form action="upload_file.php" method="post"
+								enctype="multipart/form-data">
+								<label for="file">Filename:</label>
+								<input type="file" name="file" id="file"><br>
+								<input type="submit" name="submit" value="Submit">
+							</form>
+          </div>
+          <div id="download_it" class="well" style="display:none">
+						<h1> Download It!! </h1>
+					</div>
+        </div><!--/span-->
+      </div><!--/row-->
+
+    </div><!--/.fluid-container-->
+
+
+</body></html>
+
+
